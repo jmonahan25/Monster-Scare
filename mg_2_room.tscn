@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bd5rc2njmhqod"]
+[gd_scene load_steps=22 format=3 uid="uid://bd5rc2njmhqod"]
 
 [ext_resource type="PackedScene" uid="uid://bbelso86s4tou" path="res://MG2 Room.glb" id="1_bww1y"]
 [ext_resource type="Script" path="res://SpotLight3D.gd" id="2_2qf70"]
@@ -52,6 +52,22 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ra7dv"]
+transparency = 1
+cull_mode = 1
+albedo_color = Color(1, 1, 1, 0.356863)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ft1pr"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vd6kt"]
+material = SubResource("StandardMaterial3D_ft1pr")
+top_radius = 0.0
+bottom_radius = 10.0
+height = 58.352
 
 [node name="MG2 Room" instance=ExtResource("1_bww1y")]
 
@@ -130,3 +146,11 @@ sprite_frames = SubResource("SpriteFrames_5jb3v")
 flip_h = true
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." index="15"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="16"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5.51187, 5, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_ra7dv")
+transparency = 1.0
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_vd6kt")

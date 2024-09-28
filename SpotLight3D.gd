@@ -47,5 +47,5 @@ func update_cone() -> void:
 	_cone_mesh.mesh.height = length
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
