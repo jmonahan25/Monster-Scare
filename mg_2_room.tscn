@@ -110,12 +110,17 @@ mesh = SubResource("BoxMesh_whxlu")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 5, 10)
 mesh = SubResource("BoxMesh_whxlu")
 
-[node name="Left Wall2" type="MeshInstance3D" parent="." index="12"]
+[node name="Top Wall" type="MeshInstance3D" parent="." index="12"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 10, 0)
 material_override = SubResource("StandardMaterial3D_j5xxt")
 mesh = SubResource("BoxMesh_xf5qo")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="13"]
+[node name="Bottom Wall" type="MeshInstance3D" parent="." index="13"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0.128757, 0)
+material_override = SubResource("StandardMaterial3D_j5xxt")
+mesh = SubResource("BoxMesh_xf5qo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="14"]
 physics_material_override = SubResource("PhysicsMaterial_xaxh5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D" index="0"]
@@ -124,4 +129,4 @@ scale = Vector2(4.0625, 4.0625)
 sprite_frames = SubResource("SpriteFrames_5jb3v")
 flip_h = true
 
-[node name="HTTPRequest" type="HTTPRequest" parent="." index="14"]
+[node name="HTTPRequest" type="HTTPRequest" parent="." index="15"]
