@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bd5rc2njmhqod"]
+[gd_scene load_steps=19 format=3 uid="uid://bd5rc2njmhqod"]
 
 [ext_resource type="PackedScene" uid="uid://bbelso86s4tou" path="res://MG2 Room.glb" id="1_bww1y"]
 [ext_resource type="Script" path="res://SpotLight3D.gd" id="2_2qf70"]
@@ -15,6 +15,9 @@ albedo_color = Color(0.109804, 0, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hoafv"]
 albedo_color = Color(0, 0.752941, 0.294118, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s56n0"]
+albedo_color = Color(1, 0.0862745, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwp4t"]
 albedo_color = Color(0, 0.639216, 0.929412, 1)
@@ -64,6 +67,9 @@ material_override = SubResource("StandardMaterial3D_yastb")
 
 [node name="TV Table" parent="." index="3"]
 material_override = SubResource("StandardMaterial3D_hoafv")
+
+[node name="Cube_001" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_s56n0")
 
 [node name="Sofa" parent="." index="5"]
 material_override = SubResource("StandardMaterial3D_gwp4t")
