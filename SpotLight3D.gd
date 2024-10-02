@@ -6,6 +6,14 @@ extends SpotLight3D
 
 var _cone_mesh: MeshInstance3D = null
 
+# Configuration variables
+var rotation_speed = 2.0  # Speed of rotation
+var min_angle = deg_to_rad(-105)  # Minimum angle in radians
+var max_angle = deg_to_rad(-75)   # Maximum angle in radians
+
+# Internal state variables
+var direction = 1  # 1 = rotating towards max_angle, -1 = rotating towards min_angle
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_cone_mesh = MeshInstance3D.new()
@@ -47,5 +55,15 @@ func update_cone() -> void:
 	_cone_mesh.mesh.height = length
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func _process(delta):
+	# Update the current rotation along the Y-axis
+	rotation_degrees.y += direction * rotation_speed * delta*abs(rotation_degrees.y-90)/90
+	
+	# Check if the rotation has reached or exceeded the boundaries
+	if rotation_degrees.y >= rad_to_deg(max_angle):
+		rotation_degrees.y = rad_to_deg(max_angle)
+		direction = -1  # Switch direction to rotate back
+	elif rotation_degrees.y <= rad_to_deg(min_angle):
+		rotation_degrees.y = rad_to_deg(min_angle)
+		direction = 1  # Switch direction to rotate forward
+pass

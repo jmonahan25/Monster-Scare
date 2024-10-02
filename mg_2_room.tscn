@@ -79,6 +79,7 @@ material_override = SubResource("StandardMaterial3D_ktsrq")
 material_overlay = SubResource("StandardMaterial3D_5mg2t")
 
 [node name="Bed" parent="." index="2"]
+transform = Transform3D(-1.31134e-07, 0, -2, 0, 0.5, 0, 3, 0, -8.74228e-08, -30.8542, 0.5, -0.0670433)
 material_override = SubResource("StandardMaterial3D_yastb")
 
 [node name="TV Table" parent="." index="3"]
@@ -94,15 +95,17 @@ material_override = SubResource("StandardMaterial3D_gwp4t")
 material_override = SubResource("StandardMaterial3D_2qtvk")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="7"]
-transform = Transform3D(1.00488e-07, 0.649448, 0.760406, 6.64768e-08, 0.760406, -0.649448, -1, 1.15811e-07, 3.32384e-08, -28.4024, 1.49066, 0)
-visible = false
-light_energy = 16.0
-light_indirect_energy = 16.0
+transform = Transform3D(4.61789e-08, -0.0284276, -0.999596, 8.61448e-08, -0.999596, 0.0284276, -1, -8.74228e-08, -4.37114e-08, -28.5786, 0.395592, -0.00520563)
+light_energy = 13.526
+light_indirect_energy = 9.877
 light_volumetric_fog_energy = 16.0
 light_size = 1.0
+light_specular = 6.804
 shadow_enabled = true
-spot_range = 27.6298
-spot_angle = 7.9581
+spot_range = 81.803
+spot_attenuation = 0.0525561
+spot_angle = 3.23
+spot_angle_attenuation = 0.0824693
 script = ExtResource("2_2qf70")
 
 [node name="Camera3D" type="Camera3D" parent="." index="8"]
