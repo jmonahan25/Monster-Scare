@@ -18,7 +18,7 @@ func _process(delta):
 	is_moving = false
 
 	if Input.is_action_pressed("Walk"):
-		velocity.x -= 0.01
+		velocity.z += 0.01
 		is_moving = true
 		if !audio_player.is_playing():
 			audio_player.stream = footsteps
@@ -33,7 +33,7 @@ func _process(delta):
 	position += velocity * delta
 
 func _on_bed_area_entered(area):
-	if area.is_in_group("bed"):
+	if area.is_in_group("Bed"):
 		win_game()
 
 func win_game():

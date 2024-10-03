@@ -6,7 +6,8 @@ extends SpotLight3D
 @export_range(0.0, 1.0, 0.01) var opacity: float = 0.2
 
 # Preload sound effects
-@onready var flash_sound = preload("res://heavy_click.mp3")
+@onready var flash_sound = preload("res://flashlight_click.wav")
+@onready var rustle_sound = preload("res://duvet-rustle-weightier-various-76234.mp3")
 @onready var lose_sound = preload("res://lose_game.wav")  # Make sure to add this sound file
 
 # Get reference to the AudioStreamPlayer3D child node
@@ -16,12 +17,18 @@ extends SpotLight3D
 var flash_timer: Timer
 var is_flashing: bool = false
 
+@onready var LoseText = $LoseText/LoseTextSprite
+@onready var WinText = $WinText/WinTextSprite
+@onready var camera = $Camera3D
+
 func _ready():
 	# Create AudioStreamPlayer3D if it doesn't exist
 	if not audio_player:
 		audio_player = AudioStreamPlayer3D.new()
 		add_child(audio_player)
 	
+	LoseText.visible = false
+	WinText.visible = false
 	# Set up the flash timer
 	flash_timer = Timer.new()
 	add_child(flash_timer)
@@ -38,10 +45,15 @@ func start_flashing():
 
 func set_next_flash():
 	# Set a random duration for the next state (on or off)
-	var wait_time = randf_range(1.0, 3.0) if not is_flashing else randf_range(3.0, 8.0)
+	var wait_time = randf_range(3.0, 5.0) if not is_flashing else randf_range(2.0, 3.0)
 	flash_timer.start(wait_time)
 
 func _on_flash_timer_timeout():
+	audio_player.stream = rustle_sound
+	audio_player.play()
+	audio_player.stream = flash_sound
+	audio_player.play()
+	
 	# Toggle the flashing state
 	is_flashing = not is_flashing
 	self.visible = is_flashing
@@ -57,13 +69,20 @@ func _on_flash_timer_timeout():
 	# Set the timer for the next flash
 	set_next_flash()
 
-func _process(delta):
+func _process(_delta):
 	# Check if the light is on and the player is pressing the spacebar
 	if is_flashing and Input.is_action_pressed("Walk"):
 		lose_game()
+	var camPos = camera.global_position
+	if camPos.x < -27.0:
+		win_game()
+
+func win_game():
+	WinText.visible = true
 
 func lose_game():
 	# Play the lose sound
+	LoseText.visible = true 
 	audio_player.stream = lose_sound
 	audio_player.play()
 	print("Game Over! You lost.")
